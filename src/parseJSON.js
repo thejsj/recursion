@@ -82,9 +82,8 @@ var parseJSON = function (json) {
   var parseJSONString = function (str, parent) {
     str = str.trim();
     if (isArray(str)) {
-      var array = separeateStringByCommas(removeFirstAndLastChar(str));
-      if (array.length === 1 && array[0] === '') return [];
-      return array.map(parseJSONString);
+      return separeateStringByCommas(removeFirstAndLastChar(str))
+        .map(parseJSONString);
     } else if (isObj(str)) {
       /**
        * I wanted to do something elegant that could
