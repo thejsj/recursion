@@ -25,8 +25,7 @@ var stringifyJSON = function (obj) {
       return '[' + obj.map(appendVariableString).join(',') + ']';
     } else if (obj === null) {
       return 'null';
-    } else
-    if (typeof obj === 'object') {
+    } else if (typeof obj === 'object') {
       var _obj = map(obj, function (val, key) {
         if (appendVariableString(val)) {
           return appendVariableString(key) + ":" + appendVariableString(val);
