@@ -14,17 +14,14 @@ var parseJSON = function (json) {
   var hasDoubleQuotes = firstAndLastChars('"', '"');
   var hasSingleQuotes = firstAndLastChars("'", "'");
   var isString = function (str) {
-    str = removeSpaces(str);
+    str = str.trim();
     return (hasSingleQuotes(str) || hasDoubleQuotes(str)) && str[str.length - 2] !== '\\';
   };
   var isNumber = function (str) {
     return (+(str)) + '' === str;
   };
-  var removeSpaces = function (str) {
-    return str.replace(/^\s+|\s+$/g, '');
-  };
   var removeFirstAndLastChar = function (str) {
-    str = removeSpaces(str);
+    str = str.trim();
     return str.substring(1).slice(0, str.length - 2) || '';
   };
   // Higher-order function to be used for splitting string
@@ -68,7 +65,7 @@ var parseJSON = function (json) {
           }
         }
         if (ch === base_char && !double_string_open && !single_string_open && !array_open && !object_open) {
-          if (curr_str !== '') result.push(removeSpaces(curr_str));
+          if (curr_str !== '') result.push(curr_str.trim());
           curr_str = '';
           prev_ch = '';
         } else {
@@ -76,14 +73,14 @@ var parseJSON = function (json) {
           prev_ch = ch;
         }
       }
-      if (curr_str !== '') result.push(removeSpaces(curr_str));
+      if (curr_str !== '') result.push(curr_str.trim());
       return result;
     };
   };
   var separeateStringByCommas = splitByChar(',');
   var separeateStringByColons = splitByChar(':');
   var parseJSONString = function (str, parent) {
-    str = removeSpaces(str);
+    str = str.trim();
     if (isArray(str)) {
       var array = separeateStringByCommas(removeFirstAndLastChar(str));
       if (array.length === 1 && array[0] === '') return [];
