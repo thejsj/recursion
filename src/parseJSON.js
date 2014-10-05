@@ -3,7 +3,7 @@
 
 // but you're not, so you'll write it from scratch:
 var parseJSON = function (json) {
-  // High order function to be used for detecting type
+  // Higher-order function to be used for detecting type
   var firstAndLastChars = function (first, last) {
     return function (str) {
       return str[0] === first && str[str.length - 1] === last;
@@ -27,7 +27,7 @@ var parseJSON = function (json) {
     str = removeSpaces(str);
     return str.substring(1).slice(0, str.length - 2) || '';
   };
-  // High order function to be used for splitting string
+  // Higher-order function to be used for splitting string
   var splitByChar = function (base_char) {
     return function (str) {
       var result = [];
