@@ -1,7 +1,8 @@
 // this is what you would do if you liked things to be easy:
 // var stringifyJSON = JSON.stringify;
 
-// From underscore.js
+// From underscore.js (modified)
+// https://github.com/jashkenas/underscore/blob/master/underscore.js#L116-L129
 // Return the results of applying the iterate to each element.
 var map = _.collect = function (obj, iteratee, context) {
   if (obj == null) return [];

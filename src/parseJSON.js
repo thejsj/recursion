@@ -90,9 +90,10 @@ var parseJSON = function (json) {
       return array.map(parseJSONString);
     } else if (isObj(str)) {
       /**
-       * I wanted to do something elegant with regular expressions that could
-       * parse object key value pairs nicely with regular expressions, but
+       * I wanted to do something elegant that could
+       * parse object key/value pairs nicely with regular expressions, but
        * Douglas Crockford seems to think that's a bad idea!
+       * `splitByChar` is hesitantly inspired by this code:
        * https://github.com/douglascrockford/JSON-js/blob/master/json_parse.js
        */
       var obj = {};
